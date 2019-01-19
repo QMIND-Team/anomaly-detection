@@ -136,4 +136,6 @@ print(classification_report(testingY, predictions))
 dot_data = tree.export_graphviz(model, out_file=None)
 graph = graphviz.Source(dot_data)
 
-graph.render("Insurance Model")
+graph.render(filename='model-out.png', view=True)
+
+
