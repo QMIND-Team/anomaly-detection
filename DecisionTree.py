@@ -158,7 +158,7 @@ x = dfCatsToNums(x, columnsForCatConversion, ordersForCatConversion)
 # in progress: x = normalizeColumns(x, columnsToNormalize)
 
 
-print(x)
+#print(x)
 # print(x.shape)
 # print(y.shape)
 # print()
@@ -171,7 +171,8 @@ trainingY, testingY = splitData(y, 0.6)
 # print(testingX.shape)
 # print(testingY.shape)
 
-model = tree.DecisionTreeClassifier()
+# args: max_depth, max_leaf_nodes,
+model = tree.DecisionTreeClassifier(max_leaf_nodes=4)
 model = model.fit(trainingX, trainingY)
 
 predictions = model.predict(testingX)
