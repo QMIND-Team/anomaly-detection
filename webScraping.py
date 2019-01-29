@@ -39,11 +39,16 @@ shortToLongStreetTypes = {'rd':'road',
                'dr':'drive',
                'ave':'avenue',
                'ct':'court',
+               'crt':'court',
                'st':'street',
                'blvd':'boulevard',
-               'cres':'crescent'}
+               'cres':'crescent',
+               'ln':'lane',
+                'ter':'terrace',
+                'cir':'circle',
+                'trl':'trail'}
 
-fullStreetTypes = ['place', 'road', 'drive', 'avenue', 'crescent', 'street', 'way', 'boulevard', 'court']
+fullStreetTypes = ['place', 'road', 'drive', 'avenue', 'crescent', 'street', 'way', 'boulevard', 'court', 'lane', 'terrace', 'cirlce', 'trail']
 
 def replaceShortWithLong(houseList):
     for house in houseList:
@@ -90,6 +95,17 @@ def removeTooCheap(houseList):
             del house
     return houseList
 
+def fixEastWest(houseList):
+    direcList = ['west', 'north', 'south', 'east', 'e', 'w', 's', 'n']
+    direcDict = {'e':'east', 'w':'west', 's':'south', 'n':'north',
+                 'west':'west', 'north':'north', 'south':'south', 'east':'east'}
+    for house in houseList:
+        if house[-3].lower() in direcList:
+            house[2] = house[2] + ' '+direcDict[house[-3].lower()]
+            del house[-3]
+    return houseList
+
+
 # ------------------------ main area -------------------------------------
 
 
@@ -105,7 +121,7 @@ for url in urlList:
     for house in houseDataOnPage:
         if house not in allHouseData:
             allHouseData.append(house)
-            print(house)
+            #print(house)
 
 allHouseData= replaceShortWithLong(allHouseData)
 
@@ -114,6 +130,8 @@ allHouseData=combineStreetNames(allHouseData)
 allHouseData = removeUnits(allHouseData)
 
 allHouseData = removeTooCheap(allHouseData)
+
+allHouseData = fixEastWest(allHouseData)
 
 # ---------------- output area -------------------------------------
 f = open('houseData.txt', 'w')

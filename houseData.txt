@@ -1,3 +1,12 @@
+1499900,62,Park,crescent,Kingston,ON
+819900,176,Queens,crescent,Kingston,ON
+485000,714,Brock,street,Kingston,ON
+459500,1439,Apollo,terrace,Kingston,ON
+389500,789,Davis,drive,Kingston,ON
+369900,196,York,street,Kingston,ON
+319900,872,Allum,avenue,Kingston,ON
+213900,962,Oakview,avenue,Kingston,ON
+125000,160,Princess,street,Kingston,ON
 1825000,23,Point,crescent,Kingston,ON
 1250000,47,Beverley,street,Kingston,ON
 999800,1368,Highway 15,Highway,Kingston,ON
@@ -9,12 +18,13 @@
 309900,41,Sunny Acres,road,Kingston,ON
 550000,414,Macdonnell,street,Kingston,ON
 499900,205,Mann,drive,Kingston,ON
-499900,114,Mann,drive,Kingston,ON
 499900,110,Mann,drive,Kingston,ON
+499900,114,Mann,drive,Kingston,ON
 499900,201,Mann,drive,Kingston,ON
 424900,876,Ludgate,crescent,Kingston,ON
 399900,122,Mann,drive,Kingston,ON
 399900,118,Mann,drive,Kingston,ON
+370000,3249,Wilton,road,Kingston,ON
 349900,126,Mann,drive,Kingston,ON
 349900,130,Mann,drive,Kingston,ON
 349900,241,William,street,Kingston,ON
@@ -38,7 +48,7 @@
 219900,221,Mann,drive,Kingston,ON
 1450000,94,Bagot,street,Kingston,ON
 1199900,1205-5,Gore,street,Kingston,ON
-629900,653,King,street,W,Kingston,ON
+629900,653,King west,street,Kingston,ON
 624900,1641,Providence,crescent,Kingston,ON
 550000,71,Pine,street,Kingston,ON
 550000,635,Arlington Park,place,Kingston,ON
@@ -47,7 +57,7 @@
 479900,1701,Reginald Bart,drive,Kingston,ON
 439900,557,Savannah,court,Kingston,ON
 419900,542,Nora,court,Kingston,ON
-309900,808-120,Barrett,Crt,Kingston,ON
+309900,808-120,Barrett,court,Kingston,ON
 299900,745,Louis,street,Kingston,ON
 299900,105,Dauphin,avenue,Kingston,ON
 294900,315,Rose Abbey,drive,Kingston,ON
@@ -60,11 +70,10 @@
 419900,47,Gibson,avenue,Kingston,ON
 257900,2385,Mcivor,road,Kingston,ON
 254900,2383,Mcivor,road,Kingston,ON
-599000,1274,Matias,court,Kingston,ON
 559900,4458,Highway 15,Highway,Kingston,ON
 299900,1810,Sydenham,road,Kingston,ON
 275000,2142,Unity,road,Kingston,ON
-249900,2702,Highway 2,Highway,East,Kingston,ON
+249900,2702,Highway 2 east,Highway,Kingston,ON
 229900,340,Elliott,avenue,Kingston,ON
 179900,80,Rosemund,crescent,Kingston,ON
 119900,309-310,Kingsdale,avenue,Kingston,ON
@@ -72,7 +81,7 @@
 729900,801,Stonewalk,drive,Kingston,ON
 674900,1341,Butternut Creek,road,Kingston,ON
 485000,1636,Bath,road,Kingston,ON
-399900,2018,Geology,Trl,Kingston,ON
+399900,2018,Geology,trail,Kingston,ON
 390270,1419,Monarch,drive,Kingston,ON
 388800,782,Davis,drive,Kingston,ON
 225000,1121,Middle,road,Kingston,ON
@@ -82,7 +91,6 @@
 279900,865,Larchwood,crescent,Kingston,ON
 1450000,452,Kingston Mills,road,Kingston,ON
 669900,370,Alfred,street,Kingston,ON
-359900,433,Maureen,street,Kingston,ON
 319000,1015,Springfield,drive,Kingston,ON
 309000,1424,Woodfield,crescent,Kingston,ON
 419000,1176,Johnson,street,Kingston,ON
@@ -94,13 +102,12 @@
 465000,1025,Dunham,street,Kingston,ON
 449900,137,Pauline Tom,avenue,Kingston,ON
 399900,0,Sydenham,road,Kingston,ON
-300000,769,Newmarket,Ln,Kingston,ON
+300000,769,Newmarket,lane,Kingston,ON
 289000,581,Macdonnell,street,Kingston,ON
 264900,497,Kingston Mills,road,Kingston,ON
 384900,317,Janette,street,Kingston,ON
 1150000,1148,Abbey Dawn,road,Kingston,ON
 869900,255,Earl,street,Kingston,ON
-789000,418,College,street,Kingston,ON
 779900,77,Rideau,street,Kingston,ON
 629900,75,Rideau,street,Kingston,ON
 534900,787,Friendship,court,Kingston,ON
@@ -126,7 +133,7 @@
 539900,359,Brock,street,Kingston,ON
 414900,463,Davis,drive,Kingston,ON
 599900,2706,Middle,road,Kingston,ON
-949000,81,Kenwoods,Cir,Kingston,ON
+949000,81,Kenwoods,circle,Kingston,ON
 524900,1088,Wise,street,Kingston,ON
 369000,656,Sussex,boulevard,Kingston,ON
 879900,568,Savannah,court,Kingston,ON
@@ -147,7 +154,7 @@
 590000,80,Pembroke,street,Kingston,ON
 239900,155,Guthrie,drive,Kingston,ON
 885000,1,Montgomery,boulevard,Kingston,ON
-538500,1106,Fawn,Crt,Kingston,ON
+538500,1106,Fawn,court,Kingston,ON
 389000,823,Montreal,street,Kingston,ON
 684500,1956,Rosedale,drive,Kingston,ON
 280000,40,Fifth,avenue,Kingston,ON
@@ -161,9 +168,11 @@
 150000,852,Windermere,drive,Kingston,ON
 145000,809,Windermere,drive,Kingston,ON
 145000,813,Windermere,drive,Kingston,ON
-140000,816,Windermere,drive,Kingston,ON
-140000,820,Windermere,drive,Kingston,ON
 140000,828,Windermere,drive,Kingston,ON
+140000,729,Squirrel Hill,drive,Kingston,ON
+140000,832,Windermere,drive,Kingston,ON
+140000,820,Windermere,drive,Kingston,ON
+140000,816,Windermere,drive,Kingston,ON
 140000,808,Windermere,drive,Kingston,ON
 140000,824,Windermere,drive,Kingston,ON
 140000,812,Windermere,drive,Kingston,ON
@@ -194,12 +203,10 @@
 709900,641,Gwen,avenue,Kingston,ON
 224900,263,Guthrie,drive,Kingston,ON
 448800,830,Norwest,road,Kingston,ON
-139000,160,Princess,street,Kingston,ON
 179000,2511,Princess,street,Kingston,ON
 435000,853,Stonewalk,drive,Kingston,ON
 699900,474,Brock,street,Kingston,ON
 699900,476,Brock,street,Kingston,ON
-514900,862,Riverview,way,Kingston,ON
 509900,1067,Woodhaven,drive,Kingston,ON
 2655000,7-11-677,Innovation,drive,Kingston,ON
 599900,6-677,Innovation,drive,Kingston,ON
@@ -216,8 +223,7 @@
 139000,1520,Berkshire,drive,Kingston,ON
 1350000,181,Sydenham,street,Kingston,ON
 100000,1440,Heath,street,Kingston,ON
-659000,3692,Unity,road,Kingston,ON
-349900,193,York,street,Kingston,ON
+334900,193,York,street,Kingston,ON
 123000,25,Worthington,way,Kingston,ON
 789900,609,Fieldstone,drive,Kingston,ON
 899995,103,Valroma,place,Kingston,ON
@@ -234,7 +240,6 @@
 758900,1519,Berkshire,drive,Kingston,ON
 549000,1515,Berkshire,drive,Kingston,ON
 476000,1468,Berkshire,drive,Kingston,ON
-343100,1448,Monarch,drive,Kingston,ON
 321500,1452,Monarch,drive,Kingston,ON
 365400,1557,Davenport,crescent,Kingston,ON
 340100,1561,Davenport,crescent,Kingston,ON
@@ -242,7 +247,6 @@
 598500,247,Pauline Tom,avenue,Kingston,ON
 359900,1392,Tremont,drive,Kingston,ON
 340600,1388,Tremont,drive,Kingston,ON
-729900,693,Fieldstone,drive,Kingston,ON
 379000,57,Chatham,street,Kingston,ON
 107900,98,Worthington,way,Kingston,ON
 539900,1052,Rosanna,avenue,Kingston,ON
@@ -252,7 +256,7 @@
 674900,1403,Highway 15,Highway,Kingston,ON
 774900,188,Churchill,crescent,Kingston,ON
 374500,3213,Burbrook,road,Kingston,ON
-2750000,169,King,street,East,Kingston,ON
+2750000,169,King east,street,Kingston,ON
 562710,148,Greenlees,drive,Kingston,ON
 169900,1472,Berkshire,drive,Kingston,ON
 294900,503-675,Davis,drive,Kingston,ON
@@ -268,10 +272,10 @@
 484900,520,Beth,crescent,Kingston,ON
 444000,1131,Johnson,street,Kingston,ON
 399900,455,Beth,crescent,Kingston,ON
-399000,1616,Grousewood,Ln,Kingston,ON
+399000,1616,Grousewood,lane,Kingston,ON
 384900,1230,Carfa,crescent,Kingston,ON
-355900,1158,Horizon,drive,Kingston,ON
-299000,2603,Tiller,Ln,Kingston,ON
+365100,1158,Horizon,drive,Kingston,ON
+299000,2603,Tiller,lane,Kingston,ON
 130000,876,Roshan,drive,Kingston,ON
 1850000,310,Westdale,avenue,Kingston,ON
 524900,1792,Bath,road,Kingston,ON
