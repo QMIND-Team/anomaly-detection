@@ -11,7 +11,7 @@ import urllib, os, json
 
 
 myloc = '/Users/levistringer/Documents/GitHub/Projects/Pictures'
-key = "&key=" + "AIzaSyDqaebtF2JXcBsZUILZHwq6laDy2Zaw1cg" #got banned after ~100 requests with no key
+key = "&key=" + "KEY" #got banned after ~100 requests with no key
 
 filepath = os.path.join(myloc,'tester.jpeg')
 image = "https://www.atlantisbahamas.com/media/Things%20To%20Do/Water%20Park/Beaches/Hero/Experiences_Beach.jpg"
