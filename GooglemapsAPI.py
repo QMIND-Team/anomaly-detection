@@ -10,7 +10,7 @@ import urllib, os, json
 
 
 myloc = '/Users/levistringer/Documents/GitHub/Projects/Pictures' #Local location to save images
-key = "&key=" + "AIzaSyDqaebtF2JXcBsZUILZHwq6laDy2Zaw1cg" #API key
+key = "&key=" + "KEY" #API key
 
 filepath = os.path.join(myloc,'tester.jpeg')
     
