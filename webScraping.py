@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as bs
-
+from topSecretStuff import url
 
 # retrieval and cleaning functions -----------------------------------------
 
@@ -109,7 +109,6 @@ def fixEastWest(houseList):
 # ------------------------ main area -------------------------------------
 
 
-url = "https://www.royallepage.ca/en/search/homes/on/kingston/?property_type=&house_type=&features=&listing_type=&lat=44.2311717&lng=-76.48595439999997&bypass=&address=Kingston&address_type=city&city_name=Kingston&prov_code=ON&display_type=gallery-view&da_id=&travel_time=&school_id=&search_str=Kingston%2C+ON%2C+Canada&travel_time_min=30&travel_time_mode=drive&travel_time_congestion=&min_price=0&max_price=5000000%2B&min_leaseprice=0&max_leaseprice=5000%2B&beds=0&baths=0&transactionType=SALE&includeSold=true&keyword="
 front = url[:55]
 end = url[55:]
 urlList = [front+str(x)+"/" +end for x in range(2,9)]

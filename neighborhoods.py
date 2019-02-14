@@ -86,7 +86,7 @@ for line in f.readlines()[1:]:
     outLines.append(outLine)
 f.close()
 
-f2 = open('houseDataCombinedNadded.csv', 'w')
+f2 = open('houseDataCombinedNAdded.csv', 'w')
 f2.writelines(outLines)
 f2.close()
 

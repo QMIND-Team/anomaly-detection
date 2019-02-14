@@ -6,7 +6,7 @@ for lineNum in range(len(lines)):
         if lines[lineNum][1]==lines[otherLineNum][1] and lines[lineNum][2]==lines[otherLineNum][2]:
             pass
 
-
+# this block will only add houses to newlines if they are not duplicates
 newLines = []
 for line in lines:
     dup = False
