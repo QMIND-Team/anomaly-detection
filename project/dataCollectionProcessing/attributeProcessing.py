@@ -8,7 +8,7 @@ import os
 
 def get_house_attributes(filePath):
 	cols = ["price","neighbourhood","POI"]
-	df = pd.read_csv(filePath,sep=",", header = TRUE , usecols = cols)
+	df = pd.read_csv(filePath,sep="," , usecols = cols)
 
 	return df
 
@@ -29,3 +29,4 @@ def process_house_attributes(df, train, test):
 	testX = np.hstack([testCategories, testCont])
 
 	return(trainX,testX)
+
