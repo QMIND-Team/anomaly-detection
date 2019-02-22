@@ -7,8 +7,6 @@ import tensorflow as tf
 import cv2
 import time
 
-imageIn = 'C:/Users/Colin Cumming/Desktop/Qmind/housing/8Birch.jpeg'
-
 class DetectorAPI:
     def __init__(self, path_to_ckpt):
         self.path_to_ckpt = path_to_ckpt
@@ -63,28 +61,32 @@ class DetectorAPI:
 if __name__ == "__main__":
     model_path = 'C:/Users/Colin Cumming/Desktop/Qmind/housing/frozen_inference_graph.pb'
     odapi = DetectorAPI(path_to_ckpt=model_path)
-    threshold = 0.7
-
-
-    image = cv2.imread(imageIn)
-    image = cv2.resize(image, (350, 350))
-    boxes, scores, classes, num = odapi.processFrame(image)
-    print (classes)
-    # Visualization of the results of a detection.
-    for i in range(len(boxes)):
-         # Class 20 represents house
-         if classes[i] == 20 and scores[i] > threshold:
-             box = boxes[i]
-             cv2.rectangle(image,(box[1],box[0]),(box[3],box[2]),(255,0,0),2)
+    threshold = 0.60
     
-    x = box[1]
-    y = box[0]
-    w = box[3]
-    h = box[2]
-    
-    new_img=image[y:h,x:w]
-    cv2.imwrite('test3' + '.png', new_img)
-    cv2.imshow("preview", new_img)
-    key = cv2.waitKey(1)
-    if key & 0xFF == ord('q'):
-        cv2.destroyAllWindows()
+    for count in range(0, 115):
+        print("Beginning round" + str(count))
+        imageIn = 'C:/Users/Colin Cumming/Desktop/Qmind/housing/Street-View/{}_street.jpeg'.format(count)
+        image = cv2.imread(imageIn)
+        # image = cv2.resize(image, (350, 350))
+        boxes, scores, classes, num = odapi.processFrame(image)
+        print (classes)
+        print (scores)
+        # Visualization of the results of a detection.
+        for i in range(len(boxes)):
+             # Class 20 represents house
+             if classes[i] == 20 and scores[i] > threshold:
+                 box = boxes[i]
+                 cv2.rectangle(image,(box[1],box[0]),(box[3],box[2]),(255,0,0),2)
+        
+                 x = box[1]
+                 y = box[0]
+                 w = box[3]
+                 h = box[2]
+                 new_img=image[y:h,x:w]
+                 cv2.imwrite('street' + str(count) + '.png', new_img)
+                 cv2.waitKey()
+        # cv2.imshow("preview", new_img)
+        # key = cv2.waitKey(1)
+        # if key & 0xFF == ord('q'):
+            # cv2.destroyAllWindows()
+            # break
