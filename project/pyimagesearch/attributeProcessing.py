@@ -35,7 +35,7 @@ def load_house_images(df, inputPath):
 	images = []
 
 	for i in df.index.values: 
-		basePath = os.path.sep.join([inputPath, "{}_*".format(i+1)])
+		basePath = os.path.sep.join([inputPath, "{}_*".format(i)])
 		print(basePath)
 		housePaths = sorted(list(glob.glob(basePath)))
 

@@ -17,7 +17,8 @@ def fileName(address,view):
 def getGeoCode(address):
     base = "https://maps.googleapis.com/maps/api/geocode/json?address=" 
     print(address)
-    addressformat = str(address[0]) + ',' + address[1] + ',' + address[2] + ', ' + address[3] + ', ' + address[4]
+    #addressformat = str(address[0]) + ',' + address[1] + ',' + address[2] + ', ' + address[3] + ', ' + address[4]
+    addressformat = str(address[1]) + ',' + address[2] + ',' + address[3] + ', ' + 'Kingston' + ', ' + 'Ontario'
     addressURL = urllib.parse.quote_plus(addressformat)
     url = base + addressURL + key
     response = urllib.request.urlopen(url)
@@ -29,18 +30,24 @@ def getGeoCode(address):
     return latlong
 
 def getStreetView(address,row):
-    loc = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/Satellite-View' #Local location to save images
+    loc = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/Street-View' #Local location to save images
     base = "https://maps.googleapis.com/maps/api/streetview?size=1200x800&location="
-    geocode = getGeoCode(address)
+    #geocode = getGeoCode(address) Commented out because dataset has longitude latitude 
+    geocode = []
+    geocode.append(address[1])
+    geocode.append(address[0])
     url = base + str(geocode[0]) + ',' + str(geocode[1]) + key
     file = str(row) + "_streetview" + ".jpeg"
     urllib.request.urlretrieve(url, os.path.join(loc,file))
     
     
 def getSatView(address,row):
-    loc = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/Street-View' #Local location to save images
+    loc = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/Satellite-View' #Local location to save images
     base = "https://maps.googleapis.com/maps/api/staticmap?&center="
-    geocode = getGeoCode(address)
+    #geocode = getGeoCode(address)
+    geocode = []
+    geocode.append(address[1])
+    geocode.append(address[0])
     url = base + str(geocode[0]) + ',' + str(geocode[1]) + "&zoom=19&size=400x400&maptype=satellite" + key
     file = str(row) + "_satellite" + ".jpeg"
     urllib.request.urlretrieve(url, os.path.join(loc,file))
@@ -51,13 +58,21 @@ def getAllImages(fileName, view):
         csv_reader = csv.reader(csv_file, delimiter=',')
         row_count = 0
         address = []
+        firstline = True 
         for row in csv_reader:
-            address.append(row[1])
-            address.append(row[2])
-            address.append(row[3])
-            address.append(row[4])
-            address.append(row[5])
-            
+            #if fcrstline: Takes in header 
+             #   firstline = False
+              #  continue
+            #address.append(row[1])
+            #address.append(row[2])
+            #address.append(row[3])
+            #address.append(row[4])
+            #address.append(row[5])
+            #address.append(row[6])
+            print(row)
+            address.append(row[7])
+            address.append(row[8])
+        
             if (view == 'sat'):
                 getSatView(address,row_count)
             elif (view == "street"):
@@ -98,12 +113,5 @@ def write_output(filePath):
 
 file = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/cleanedHouses.csv'   
 
-#rite_output(file)         
-            
-#getAllImages('/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/cleanedHouses1_2.csv','street')
 
-#TEST
-getAllImages('/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/cleanedHouses1_2.csv','sat')
-
-#addy = [146, 'Greenlees','drive','Kingston','ON']
-#getStreetView(addy,'glob')
+getAllImages('/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/dataCollectionProcessing/KingstonHousesNadded.csv','street')

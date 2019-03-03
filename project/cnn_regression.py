@@ -17,7 +17,7 @@ import os
 
 #print("[INFO] loading house attributes...")
 #inputPath = os.path.sep.join([args["dataset"], "HousesInfo.txt"])
-inputPathHouse = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/cleanedHouses1_2.csv'
+inputPathHouse = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/cleanedHouses.csv'
 
 df = attributeProcessing.get_house_attributes(inputPathHouse)
  
