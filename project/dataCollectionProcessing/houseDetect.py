@@ -83,7 +83,7 @@ if __name__ == "__main__":
                  w = box[3]
                  h = box[2]
                  new_img=image[y:h,x:w]
-                 cv2.imwrite('street' + str(count) + '.png', new_img)
+                 cv2.imwrite(str(count) +'_street' + '.jpeg', new_img)
                  cv2.waitKey()
         # cv2.imshow("preview", new_img)
         # key = cv2.waitKey(1)
