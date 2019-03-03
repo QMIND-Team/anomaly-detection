@@ -95,7 +95,7 @@ f2.close()
 
 def addNeighbourhoods(fileName):
     f = open(fileName, 'r')
-    houses = [x.strip().split(',') for x in f.readlines()[:10]]
+    houses = [x.strip().split(',') for x in f.readlines()]
     f.close()
 
     neighbourhoods = readShapes()
@@ -113,6 +113,8 @@ def addNeighbourhoods(fileName):
             #print(point)
             nName = getName(point, neighbourhoods)
             house.append(nName)
+            house.append(str(longlat[0]))
+            house.append(str(longlat[1]))
             fout.write(','.join(house)+"\n")
         except:
             print("Failed to get a name. -----------------------------------")

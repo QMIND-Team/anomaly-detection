@@ -100,7 +100,7 @@ for x in range(len(outLines)):
 kingstonLines = []
 for line in outLines:
     if line[-2].lower().replace(" ", '')=='kingston':
-        kingstonLines.append([line[0], line[2], line[3], line[4]])
+        kingstonLines.append([line[0], line[2], line[3], line[4], line[5], line[6]])
 
 fout = open('KingstonHouses.txt', 'w')
 for x in kingstonLines:
