@@ -30,7 +30,7 @@ def readShapes():
 
 def getGeoCode(address):
     base = "https://maps.googleapis.com/maps/api/geocode/json?address="
-    addressformat = str(address[0]) + ' ' + address[1] + ' ' + address[2] + ', ' + address[3] + ', ' + address[4]
+    addressformat = str(address[1]) + ' ' + address[2] + ' ' + address[3] + ', ' + 'Kingston' + ', ' + 'Ontario'
     addressURL = urllib.parse.quote_plus(addressformat)
     url = base + addressURL + apiKey
     response = urllib.request.urlopen(url)
@@ -51,7 +51,7 @@ def getName(p, neighbourhoods):
 
 
 
-
+'''
 
 neighbourhoods = readShapes()
 
@@ -90,3 +90,35 @@ f2 = open('houseDataCombinedNAdded.csv', 'w')
 f2.writelines(outLines)
 f2.close()
 
+'''
+
+
+def addNeighbourhoods(fileName):
+    f = open(fileName, 'r')
+    houses = [x.strip().split(',') for x in f.readlines()]
+    f.close()
+
+    neighbourhoods = readShapes()
+    for n in neighbourhoods:
+        x, y = n[1].exterior.xy
+        plt.plot(x, y)
+        # plt.show()
+    # plt.show()
+    fout = open("KingstonHousesNadded.txt", 'w')
+    for house in houses:
+        try:
+            longlat = getGeoCode(house)
+            point = Point(longlat)
+            plt.plot(point.x, point.y, marker='o', markersize=3, color="red")
+            #print(point)
+            nName = getName(point, neighbourhoods)
+            house.append(nName)
+            house.append(str(longlat[0]))
+            house.append(str(longlat[1]))
+            fout.write(','.join(house)+"\n")
+        except:
+            print("Failed to get a name. -----------------------------------")
+    plt.show()
+    fout.close()
+
+addNeighbourhoods("KingstonHouses.txt")
