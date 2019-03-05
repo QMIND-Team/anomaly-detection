@@ -6,6 +6,7 @@ import numpy as np
 import tensorflow as tf
 import cv2
 import time
+import csv
 
 class DetectorAPI:
     def __init__(self, path_to_ckpt):
@@ -59,32 +60,41 @@ class DetectorAPI:
         self.default_graph.close()
 
 if __name__ == "__main__":
-    model_path = 'C:/Users/Colin Cumming/Desktop/Qmind/housing/frozen_inference_graph.pb'
+    model_path = 'C:/Users/Colin Cumming/Desktop/Qmind/housing/frozen_inference_graph.pb' # path to frozen_interface_graph.pb
     odapi = DetectorAPI(path_to_ckpt=model_path)
-    threshold = 0.60
-    
-    for count in range(0, 115):
-        print("Beginning round" + str(count))
-        imageIn = 'C:/Users/Colin Cumming/Desktop/Qmind/housing/Street-View/{}_street.jpeg'.format(count)
+    threshold = 0.50
+    new_count = 0
+    indices = []
+    for count in range(0, 5):
+        print("Beginning round " + str(count))
+        imageIn = 'C:/Users/Colin Cumming/Desktop/Qmind/housing/cropped_images/Street-View/{}_streetview.jpeg'.format(count) # path to housing images, put this in a different folder than working directory
         image = cv2.imread(imageIn)
         # image = cv2.resize(image, (350, 350))
         boxes, scores, classes, num = odapi.processFrame(image)
         print (classes)
         print (scores)
+        maxthresh = 0
         # Visualization of the results of a detection.
         for i in range(len(boxes)):
              # Class 20 represents house
              if classes[i] == 20 and scores[i] > threshold:
-                 box = boxes[i]
-                 cv2.rectangle(image,(box[1],box[0]),(box[3],box[2]),(255,0,0),2)
+                 if scores[i] > maxthresh:
+                     maxthresh = scores[i]
+                     index = i
         
-                 x = box[1]
-                 y = box[0]
-                 w = box[3]
-                 h = box[2]
-                 new_img=image[y:h,x:w]
-                 cv2.imwrite(str(count) +'_street' + '.jpeg', new_img)
-                 cv2.waitKey()
+        if classes[index] == 20:      
+            indices.append(count)
+            box = boxes[index]
+            # cv2.rectangle(image,(box[1],box[0]),(box[3],box[2]),(255,0,0),2)
+            x = box[1]
+            y = box[0]
+            w = box[3]
+            h = box[2]
+            new_img=image[y:h,x:w]
+            cv2.imwrite(str(new_count) +'_street' + '.jpeg', new_img)
+            cv2.waitKey()
+            new_count += 1
+    print(indices)
         # cv2.imshow("preview", new_img)
         # key = cv2.waitKey(1)
         # if key & 0xFF == ord('q'):
