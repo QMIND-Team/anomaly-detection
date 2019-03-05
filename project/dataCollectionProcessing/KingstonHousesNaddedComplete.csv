@@ -1,3 +1,4 @@
+price,number,Streetname,streetType,city,province,neighbourhood,long,lat
 253000,16,Raglan,Road,KINGSTON,ON,Inner Harbour,-76.4835325,44.2380221
 320100,999,WINFORD,Place,KINGSTON,ON,Sutton Mills,-76.5849987,44.2554952
 382000,1201,CROSSFIELD,Avenue,KINGSTON,ON,Cataraqui North,-76.5506429,44.2645145

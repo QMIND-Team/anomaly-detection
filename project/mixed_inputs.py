@@ -52,7 +52,6 @@ x = Dense(1, activation="linear")(x)
 
 model = Model(inputs=[mlp.input, cnn.input], outputs=x)
 
-model = models.create_cnn(32, 64, 3, regress=True)
 opt = Adam(lr=1e-3, decay=1e-3 / 200)
 model.compile(loss="mean_absolute_percentage_error", optimizer=opt)
  

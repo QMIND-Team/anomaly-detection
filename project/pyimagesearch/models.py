@@ -47,4 +47,4 @@ def create_cnn(width, height, depth, filters = (16,32,64), regress = False):
 
 		model = Model(inputs,x)
 
-		return model
+	return model
