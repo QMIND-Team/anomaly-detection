@@ -114,4 +114,4 @@ def write_output(filePath):
 file = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/cleanedHouses.csv'   
 
 
-getAllImages('/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/dataCollectionProcessing/KingstonHousesNadded.csv','street')
+getAllImages('/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/dataCollectionProcessing/KingstonHousesNaddedComplete.csv','street')

@@ -60,14 +60,14 @@ class DetectorAPI:
         self.default_graph.close()
 
 if __name__ == "__main__":
-    model_path = 'C:/Users/Colin Cumming/Desktop/Qmind/housing/frozen_inference_graph.pb' # path to frozen_interface_graph.pb
+    model_path = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/frozen_inference_graph.pb' # path to frozen_interface_graph.pb
     odapi = DetectorAPI(path_to_ckpt=model_path)
     threshold = 0.50
     new_count = 0
     indices = []
-    for count in range(0, 5):
+    for count in range(0, 1001):
         print("Beginning round " + str(count))
-        imageIn = 'C:/Users/Colin Cumming/Desktop/Qmind/housing/cropped_images/Street-View/{}_streetview.jpeg'.format(count) # path to housing images, put this in a different folder than working directory
+        imageIn = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/Street-View/{}_streetview.jpeg'.format(count) # path to housing images, put this in a different folder than working directory
         image = cv2.imread(imageIn)
         # image = cv2.resize(image, (350, 350))
         boxes, scores, classes, num = odapi.processFrame(image)
@@ -91,10 +91,18 @@ if __name__ == "__main__":
             w = box[3]
             h = box[2]
             new_img=image[y:h,x:w]
-            cv2.imwrite(str(new_count) +'_street' + '.jpeg', new_img)
+            cv2.imwrite('/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/cropped/' + str(new_count) +'_streetview' + '.jpeg', new_img)
             cv2.waitKey()
             new_count += 1
     print(indices)
+    ind_Out = open("indices.txt", "w")
+    for number in indices:
+        ind_Out.write(number)
+        ind_Out.write(",")
+    ind_Out.close()
+    #Save indices into a text file 
+
+
         # cv2.imshow("preview", new_img)
         # key = cv2.waitKey(1)
         # if key & 0xFF == ord('q'):

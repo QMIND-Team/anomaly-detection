@@ -7,8 +7,8 @@ import cv2
 import os 
 
 def get_house_attributes(filePath):
-	cols = ["price","neighbourhood","POI"]
-	df = pd.read_csv(filePath,sep="," , usecols = cols)
+	#cols = ["price","neighbourhood","POI"]
+	df = pd.read_csv(filePath,sep=",") #, usecols = cols)
 
 	return df
 
