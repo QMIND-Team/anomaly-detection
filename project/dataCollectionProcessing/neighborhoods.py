@@ -95,7 +95,7 @@ f2.close()
 
 def addNeighbourhoods(fileName):
     f = open(fileName, 'r')
-    houses = [x.strip().split(',') for x in f.readlines()]
+    houses = [x.strip().split(',') for x in f.readlines()[1306:]]
     f.close()
 
     neighbourhoods = readShapes()
@@ -104,7 +104,7 @@ def addNeighbourhoods(fileName):
         plt.plot(x, y)
         # plt.show()
     # plt.show()
-    fout = open("KingstonHousesNadded.txt", 'w')
+    fout = open("KingstonHousesNadded2.txt", 'w')
     for house in houses:
         try:
             longlat = getGeoCode(house)
