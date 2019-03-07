@@ -10,7 +10,7 @@ def collectIndices(dir,pattern):
 		#print(bName)
 		indice = bName.split('_')
 		indices.append(indice[0])
-	print(indices)
+	print(indice)
 	ind_Out = open("indices.txt", "w")
 	for number in indices:
 		ind_Out.write(number)

@@ -3,7 +3,7 @@ import os
 
 
 
-direcPath = r"C:/_Root Folder/ComputerPrograming/housingValuation/project/data/satTest/"
+direcPath = r'/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/renamedcropped/'
 
 print(os.listdir(direcPath))
 
@@ -20,7 +20,7 @@ for file in newFileNameList:
     fileName = '_'.join(file)
     print(fileName)
 
-    dst = str(i) + "_satelite" + ".jpeg"
+    dst = str(i) + "_streetview" + ".jpeg"
     src = direcPath + fileName
     dst = direcPath + dst
 

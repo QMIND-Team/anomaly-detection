@@ -17,7 +17,7 @@ import os
 
 #print("[INFO] loading house attributes...")
 #inputPath = os.path.sep.join([args["dataset"], "HousesInfo.txt"])
-inputPathHouse = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/cleanedHouses.csv'
+inputPathHouse = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/POITest.csv'
 
 df = attributeProcessing.get_house_attributes(inputPathHouse)
  
@@ -37,9 +37,9 @@ split = train_test_split(df, images, test_size=0.25, random_state=42)
 # find the largest house price in the training set and use it to
 # scale our house prices to the range [0, 1] (will lead to better
 # training and convergence)
-maxPrice = trainAttrX["price"].max()
-trainY = trainAttrX["price"] / maxPrice
-testY = testAttrX["price"] / maxPrice
+maxPrice = trainAttrX['price'].max() #changed from "price"
+trainY = trainAttrX['price'] / maxPrice
+testY = testAttrX['price'] / maxPrice
  
 # create our Convolutional Neural Network and then compile the model
 # using mean absolute percentage error as our loss, implying that we

@@ -4,6 +4,8 @@ Created on Sun Mar  3 14:34:04 2019
 
 @author: Colin Cumming
 """
+from sklearn.preprocessing import MinMaxScaler
+
 from pyimagesearch import attributeProcessing
 from pyimagesearch import models
 from sklearn.model_selection import train_test_split
@@ -15,20 +17,16 @@ import numpy as np
 import argparse
 import locale
 import os
+import matplotlib.pyplot as plt
 
-ap = argparse.ArgumentParser()
-ap.add_argument("-d", "--dataset", type=str, required=True,
-	help="path to input dataset of house images")
-args = vars(ap.parse_args())
-
-print("[INFO] loading house attributes...")
-inputPath = os.path.sep.join([args["dataset"], "name of file"])
-df = attributeProcessing.get_house_attributes(inputPath)
+inputPathHouse = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/FINALDATASET.csv'
+df = attributeProcessing.get_house_attributes(inputPathHouse)
  
+houseImages = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/Images'
 # load the house images and then scale the pixel intensities to the
 # range [0, 1]
 print("[INFO] loading house images...")
-images = attributeProcessing.load_house_images(df, args["dataset"])
+images = attributeProcessing.load_house_images(df, houseImages)
 images = images / 255.0
 
 print("[INFO] processing data...")
@@ -39,12 +37,13 @@ maxPrice = trainAttrX["price"].max()
 trainY = trainAttrX["price"] / maxPrice
 testY = testAttrX["price"] / maxPrice
 
-(trainAttrX, testAttrX) = attributeProcessing.process_house_attributes(df,
-	trainAttrX, testAttrX)
+
+(trainAttrX, testAttrX) = attributeProcessing.process_house_attributes(df,trainAttrX, testAttrX)
 
 mlp = models.create_mlp(trainAttrX.shape[1], regress=False)
-cnn = models.create_cnn(64, 64, 3, regress=False)
-
+cnn = models.create_cnn(32, 64, 3, regress=False)
+print(type(mlp))
+print(type(cnn))
 combinedInput = concatenate([mlp.output, cnn.output])
 
 x = Dense(4, activation="relu")(combinedInput)
@@ -53,17 +52,40 @@ x = Dense(1, activation="linear")(x)
 model = Model(inputs=[mlp.input, cnn.input], outputs=x)
 
 opt = Adam(lr=1e-3, decay=1e-3 / 200)
-model.compile(loss="mean_absolute_percentage_error", optimizer=opt)
+model.compile(optimizer=opt, metrics=["accuracy"], loss="mean_absolute_percentage_error") #loss = 'binary_crossentropy')  try this later
  
 # train the model
 print("[INFO] training model...")
-model.fit(trainImagesX, trainY, validation_data=(testImagesX, testY),
-	epochs=200, batch_size=8)
-
+history = model.fit(
+	[trainAttrX, trainImagesX], trainY,
+	validation_data=([testAttrX, testImagesX], testY), #put back to 200 epochs
+	epochs=10, batch_size=8)
 # make predictions on the testing data
 print("[INFO] predicting house prices...")
-preds = model.predict(testImagesX)
- 
+preds = model.predict([testAttrX, testImagesX])
+
+
+#try and plot later
+# print(history.history.keys()) 
+# # summarize history for accuracy
+# plt.plot(history.history['acc'])
+# plt.plot(history.history['val_acc'])
+# plt.title('model accuracy')
+# plt.ylabel('accuracy')
+# plt.xlabel('epoch')
+# plt.legend(['train', 'test'], loc='upper left')
+# plt.show()
+# # summarize history for loss
+# plt.plot(history.history['loss'])
+# plt.plot(history.history['val_loss'])
+# plt.title('model loss')
+# plt.ylabel('loss')
+# plt.xlabel('epoch')
+# plt.legend(['train', 'test'], loc='upper left')
+# plt.show(block=True)
+
+
+
 # compute the difference between the *predicted* house prices and the
 # *actual* house prices, then compute the percentage difference and
 # the absolute percentage difference
@@ -75,6 +97,8 @@ absPercentDiff = np.abs(percentDiff)
 # difference
 mean = np.mean(absPercentDiff)
 std = np.std(absPercentDiff)
+
+
  
 # finally, show some statistics on our model
 locale.setlocale(locale.LC_ALL, "en_US.UTF-8")

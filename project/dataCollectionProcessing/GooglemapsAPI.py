@@ -9,7 +9,7 @@ Created on Wed Jan 23 00:03:07 2019
 import urllib, os, json, csv, requests
 
 key = "&key=" + "AIzaSyDqaebtF2JXcBsZUILZHwq6laDy2Zaw1cg" #API key
-
+#key = "&key=" +'AIzaSyBRYp_U4eWl_3Ow-18cpPReZCWUAoPvhuo'
 def fileName(address,view):
     fi = str(address[0])+ address[1] + address[2] + address[3] + address[4] + view + ".jpeg"
     return fi
@@ -114,4 +114,4 @@ def write_output(filePath):
 file = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/cleanedHouses.csv'   
 
 
-getAllImages('/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/dataCollectionProcessing/KingstonHousesNaddedComplete.csv','street')
+getAllImages('/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/dataCollectionProcessing/FINALDATASET2.csv','sat')

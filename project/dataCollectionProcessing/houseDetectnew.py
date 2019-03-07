@@ -65,7 +65,7 @@ if __name__ == "__main__":
     threshold = 0.50
     new_count = 0
     indices = []
-    for count in range(0, 1001):
+    for count in range(1835, 2041):
         print("Beginning round " + str(count))
         imageIn = '/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/Street-View/{}_streetview.jpeg'.format(count) # path to housing images, put this in a different folder than working directory
         image = cv2.imread(imageIn)
@@ -75,6 +75,7 @@ if __name__ == "__main__":
         print (scores)
         maxthresh = 0
         # Visualization of the results of a detection.
+        index =0 
         for i in range(len(boxes)):
              # Class 20 represents house
              if classes[i] == 20 and scores[i] > threshold:
@@ -91,15 +92,15 @@ if __name__ == "__main__":
             w = box[3]
             h = box[2]
             new_img=image[y:h,x:w]
-            cv2.imwrite('/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/cropped/' + str(new_count) +'_streetview' + '.jpeg', new_img)
+            cv2.imwrite('/Users/levistringer/Documents/GitHub/Projects/anomaly-detection/project/data/cropped/' + str(count) +'_streetview' + '.jpeg', new_img)
             cv2.waitKey()
             new_count += 1
     print(indices)
-    ind_Out = open("indices.txt", "w")
-    for number in indices:
-        ind_Out.write(number)
-        ind_Out.write(",")
-    ind_Out.close()
+    #ind_Out = open("indices.txt", "w")
+    #for number in indices:
+     #   ind_Out.write(number)
+      #  ind_Out.write(",")
+    #ind_Out.close
     #Save indices into a text file 
 
 

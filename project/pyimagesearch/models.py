@@ -1,3 +1,4 @@
+# import the necessary packages
 from keras.models import Sequential
 from keras.layers.normalization import BatchNormalization
 from keras.layers.convolutional import Conv2D
@@ -9,15 +10,23 @@ from keras.layers import Flatten
 from keras.layers import Input
 from keras.models import Model
 
-def create_mlp(dim, regress = False):
-	model = Sequential()
-	model.add(Dense(8, input_dim = dim, Activation = "relu"))
-	model.add(Dense(2,Activation = "relu"))
 
+
+def create_mlp(dim, regress=False):
+	# define our MLP network
+	model = Sequential()
+	model.add(Dense(8, input_dim=dim, activation="relu"))
+	model.add(Dense(4, activation="relu"))
+
+	# check to see if the regression node should be added
 	if regress:
-		model.add(Dense(1, Activation = "linear"))
-		
+		model.add(Dense(1, activation="linear"))
+
+	# return our model
+	return model
+
 def create_cnn(width, height, depth, filters = (16,32,64), regress = False):
+
 	inputShape = (height, width, depth)
 	chanDim = -1
 
@@ -33,18 +42,17 @@ def create_cnn(width, height, depth, filters = (16,32,64), regress = False):
 		x = BatchNormalization(axis = chanDim)(x)
 		x = MaxPooling2D(pool_size = (2,2))(x)
 
-		x = Flatten()(x)
-		x = Dense(16)(x)
-		x = Activation("relu")(x)
-		x = BatchNormalization(axis = chanDim)(x)
-		x = Dropout(0.5)(x)
+	x = Flatten()(x)
+	x = Dense(16)(x)
+	x = Activation("relu")(x)
+	x = BatchNormalization(axis = chanDim)(x)
+	x = Dropout(0.5)(x)
 
-		x = Dense(4)(x)
-		x = Activation("relu")(x)
+	x = Dense(4)(x)
+	x = Activation("relu")(x)
 
-		if regress:
-			x = Dense(1,activation = "linear")(x)
+	if regress:
+		x = Dense(1,activation = "linear")(x)
 
-		model = Model(inputs,x)
-
-	return model
+	model = Model(inputs,x)
+	return model 
