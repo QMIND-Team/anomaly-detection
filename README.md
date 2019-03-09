@@ -6,7 +6,7 @@ At <u>Queen's Machine Intelligence Neuroevolution Design</u> (<b>QMIND</b>)<br/>
 In collaboration with <u>Cooperators Insurance Group</u>.
 
 ### The Problem
-home owners often want to purchase short temp insurance form their insurance provider, 
+Home owners often want to purchase short temp insurance form their insurance provider, 
 so they can rent out their home on services like airbnb. for this to happen, they must 
 fill out a multiple hour long survey with detailed information about their home and/or
 have an appraiser come to appraise the value fo the home. having a professional appraiser
@@ -14,7 +14,7 @@ appraise your house can be a costly process, while potentially taking a substant
 to setup. these costs and delays are good for neither the insuring party or the customer.
 
 ### Our Solution
-a model which requires input of an address and minimal supplemental information and can
+A model which requires input of an address and minimal supplemental information and can
 output an estimation of the rebuild cost of the house. 
 our solution will:
 
