@@ -1,5 +1,5 @@
-# Appraise AI
-Our goal: "To predict housing rebuild cost from limited attributes with deep learning"
+# Google Street-View Appraiser
+Our goal: "To predict housing rebuild cost from limited attributes with deep learning."
 
 By <b>Levi Stringer, Colin Cumming, Jacob Laframboise,</b> and <b>Nic Merz.</b> <br/>
 At <u>Queen's Machine Intelligence Neuroevolution Design</u> (<b>QMIND</b>)<br/>
