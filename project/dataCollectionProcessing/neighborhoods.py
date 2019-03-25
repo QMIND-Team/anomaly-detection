@@ -11,10 +11,48 @@ longitude, latitude to the file of house data.
 
 from matplotlib import pyplot as plt
 import urllib, os, json
-from topSecretStuff import apiKey
+#from topSecretStuff import apiKey
+import requests
 
 from shapely.geometry import Point
 from shapely.geometry.polygon import Polygon
+
+
+def readShapesWithApi():
+    response = requests.get("https://opendatakingston.cityofkingston.ca/api/v2/catalog/datasets/neighbourhoods/exports/json?rows=-1&pretty=false&timezone=UTC")
+    #print(response.text)
+    data = response.json()
+    #print(json.dumps(data, indent=4, sort_keys=True))
+    #print(data)
+    #print(data['metas'])
+    #data = data['fields']['geo_shape']
+    #data = data['geographic_area']['coordinates']
+    #print(data)
+    #for n in data:
+        #print(n)
+    for n in data:
+        pass
+        #print(n)
+    #print()
+
+    nList = []
+    count = 0
+    for n in data:
+        points = n['geo_shape']['geometry']['coordinates']
+        while len(points) == 1:
+            if len(points) == 2:
+                break
+            points = points[0]
+        if len(points) != 2:
+            polygon = Polygon(points)
+            name = n['name']
+            # print(name)
+            nList.append([name, polygon])
+            count += 1
+
+    return nList
+
+
 
 
 def readShapes():
@@ -79,13 +117,13 @@ def addNeighbourhoods(fileName):
     houses = [x.strip().split(',') for x in f.readlines()[1306:]]
     f.close()
 
-    neighbourhoods = readShapes()
+    neighbourhoods = readShapesWithApi()
     for n in neighbourhoods:
         x, y = n[1].exterior.xy
         plt.plot(x, y)
         # plt.show()
     # plt.show()
-    fout = open("KingstonHousesNadded2.txt", 'w')
+    fout = open("KingstonHousesNadded3.txt", 'w')
     for house in houses:
         try:
             longlat = getGeoCode(house)
@@ -105,3 +143,6 @@ def addNeighbourhoods(fileName):
 
 if __name__ == "__main__":
     addNeighbourhoods("KingstonHouses.txt")
+    # print(readShapesWithApi())
+    # print(readShapes())
+
